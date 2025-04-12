@@ -1,0 +1,218 @@
+.weather-card {
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  max-width: 800px;
+  width: 100%;
+  margin: 2rem auto;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(15px);
+  position: relative;
+  overflow: hidden;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.weather-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 24px;
+  padding: 2px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  pointer-events: none;
+}
+
+.weather-card.light {
+  background: var(--card-bg-light);
+  color: var(--text-color-light);
+}
+
+.weather-card.dark {
+  background: var(--card-bg-dark);
+  color: var(--text-color-dark);
+}
+
+.weather-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.weather-header h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.timestamp {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.weather-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+}
+
+.weather-icon {
+  text-align: center;
+  padding: 1rem;
+}
+
+.weather-icon img {
+  width: 120px;
+  height: 120px;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.weather-icon img:hover {
+  transform: scale(1.1);
+}
+
+.description {
+  margin: 0.5rem 0;
+  text-transform: capitalize;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.temperature-container {
+  text-align: center;
+  padding: 1rem;
+}
+
+.temperature {
+  font-size: 4rem;
+  margin: 0;
+  font-weight: 700;
+  background: linear-gradient(135deg, #00b894, #00cec9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.temperature:hover {
+  transform: scale(1.05);
+}
+
+.feels-like {
+  margin: 0.5rem 0 0;
+  opacity: 0.7;
+  font-size: 1.1rem;
+}
+
+.weather-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0;
+  padding: 1.5rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  flex-wrap: wrap;
+  height: 100%;
+}
+
+.detail-item {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.detail-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0, 184, 148, 0.1), rgba(0, 206, 201, 0.1));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.detail-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.detail-item:hover::before {
+  opacity: 1;
+}
+
+.detail-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  opacity: 0.7;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.detail-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #00b894, #00cec9);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Make the layout horizontal */
+.weather-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-top: 2rem;
+  gap: 1.5rem;
+}
+
+.weather-main {
+  flex: 2;
+  min-width: 300px;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.weather-details {
+  flex: 1;
+  min-width: 200px;
+  margin: 0;
+}
